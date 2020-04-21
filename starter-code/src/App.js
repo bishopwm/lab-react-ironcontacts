@@ -16,7 +16,7 @@ class App extends Component {
         <td><img className="actor-thumbnail" src={this.state.actors[i].pictureUrl} alt=""></img></td>
         <td>{this.state.actors[i].name}</td>    
         <td>{this.state.actors[i].popularity}</td>
-        <td><button onClick={this.removeActor(i)}>Delete</button></td>
+        <td><button onClick={()=> this.removeActor(i)}>Delete</button></td>
       </tr>
       )}
     return <tbody className="actors-table">{actorsList}</tbody>;
@@ -53,7 +53,12 @@ class App extends Component {
   }
 
   removeActor = (i) => {
-    console.log("deleting" + i)
+    console.log("deleting" + i);
+    let actorsCopy = [...this.state.actors]
+    actorsCopy.splice(i, 1)
+    this.setState({
+      actors: actorsCopy
+    })
   }
 
   render() {
