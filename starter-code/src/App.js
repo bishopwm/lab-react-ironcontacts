@@ -12,14 +12,14 @@ class App extends Component {
     let actorsList = [];
     for(let i = 0; i<this.state.actors.length; i++){
       actorsList.push(
-      <li key={i}>
+      <li className="actors-list-item" key={i}>
         <img className="actor-thumbnail" src={this.state.actors[i].pictureUrl} alt=""></img>
-        {this.state.actors[i].name} 
-        {this.state.actors[i].popularity}
+        Name: {this.state.actors[i].name} +    
+        Popularity: {this.state.actors[i].popularity}
       </li>
       )
     }
-    return actorsList;
+    return <ul className="actors-list">{actorsList}</ul>;
   }
 
   render() {
