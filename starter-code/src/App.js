@@ -5,8 +5,7 @@ import contacts from './contacts.json';
 class App extends Component {
 
   state = {
-    actors: [...contacts].slice(0,5),
-    //randomActor: [...contacts][Math.floor(Math.random()*100)]
+    actors: [...contacts].slice(0,5)
   }
 
   showActors = () => {
@@ -18,8 +17,7 @@ class App extends Component {
         <td>{this.state.actors[i].name}</td>    
         <td>{this.state.actors[i].popularity}</td>
       </tr>
-      )
-    }
+      )}
     return <tbody className="actors-table">{actorsList}</tbody>;
   }
 
@@ -29,13 +27,25 @@ class App extends Component {
     })
   }
 
+  sortAlpha = () => {
+    console.log("Sorting")
+    let alphaSorted = [...this.state.actors].sort(function(a,b){
+      if (a.name < b.name) return -1;
+      else if (a.name > b.name) return 1;
+      return 0;
+    })
+    this.setState({
+      actors: alphaSorted
+    })
+  }
+
   render() {
-    console.log(this.state.actors)
-    //console.log(this.state.randomActor)
+
     return (
       <div className="App">
         <h1 className="App-title">Iron Contacts</h1>
         <button onClick={this.addRandom}>Add Random Contact</button>
+        <button onClick={this.sortAlpha}>Sort Alphabetically</button>
         <table>
           <tbody>
             <tr>
