@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import contacts from './contacts.json';
 
@@ -12,20 +11,25 @@ class App extends Component {
   showActors = () => {
     let actorsList = [];
     for(let i = 0; i<this.state.actors.length; i++){
-      actorsList.push(this.state.actors[i].name)
+      actorsList.push(
+      <li key={i}>
+        <img className="actor-thumbnail" src={this.state.actors[i].pictureUrl} alt=""></img>
+        {this.state.actors[i].name} 
+        {this.state.actors[i].popularity}
+      </li>
+      )
     }
     return actorsList;
   }
 
   render() {
-    console.log(this.state.actors[0].name);
+    //console.log(this.state.actors[0].name);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <>{this.showActors()}</>
+        <h1 className="App-title">Iron Contacts</h1>
+          <>
+            {this.showActors()}
+          </>
       </div>
       
     );
