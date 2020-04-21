@@ -16,6 +16,7 @@ class App extends Component {
         <td><img className="actor-thumbnail" src={this.state.actors[i].pictureUrl} alt=""></img></td>
         <td>{this.state.actors[i].name}</td>    
         <td>{this.state.actors[i].popularity}</td>
+        <td><button onClick={this.removeActor(i)}>Delete</button></td>
       </tr>
       )}
     return <tbody className="actors-table">{actorsList}</tbody>;
@@ -51,6 +52,10 @@ class App extends Component {
     })
   }
 
+  removeActor = (i) => {
+    console.log("deleting" + i)
+  }
+
   render() {
 
     return (
@@ -65,6 +70,7 @@ class App extends Component {
               <td><strong>Picture</strong></td>
               <td><strong>Name</strong></td>
               <td><strong>Popularity</strong></td>
+              <td><strong>Action</strong></td>
             </tr>
           </tbody>
           {this.showActors()}
